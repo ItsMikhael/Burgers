@@ -1,6 +1,7 @@
 package com.mstefanski;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class Hamburger {
 
@@ -8,7 +9,7 @@ public class Hamburger {
     private String meat;
     private double price;
     private String burgerName;
-    private String additions = " ";
+    private ArrayList<String> additions = new ArrayList<>();
     private double addsPrice = 0.00;
     private double totalPrice;
     private int addsCount = 0;
@@ -36,24 +37,8 @@ public class Hamburger {
         this.totalPrice = this.price;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
     public int getAddsCount() {
         return addsCount;
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public String getAdditions() {
-        return additions;
-    }
-
-    public double getAddsPrice() {
-        return addsPrice;
     }
 
     public void addAdds(double price) {
@@ -65,7 +50,7 @@ public class Hamburger {
     }
 
     public void addAddz(String adds) {
-        this.additions = this.additions + adds;
+        this.additions.add(adds);
     }
 
     public void addAddCount() {
@@ -86,37 +71,61 @@ public class Hamburger {
 
     public void addLettuce() {
         if(addsCount < 4) {
-            this.addAdds(0.45);
-            this.addTotal(0.45);
-            this.addAddz("Lettuce ");
-            this.increaseAddsCount();
+            if(this.checkIfContains("Lettuce")) {
+                System.out.println("You have already added Lettuce!");
+            } else {
+                this.addAdds(0.45);
+                this.addTotal(0.45);
+                this.additions.add("Lettuce");
+                this.increaseAddsCount();
+            }
         }
     }
 
     public void addTomato() {
         if(addsCount < 4) {
-            this.addAdds(0.50);
-            this.addTotal(0.50);
-            this.addAddz("Tomato ");
-            this.increaseAddsCount();
+            if(this.checkIfContains("Tomato")) {
+                System.out.println("You have already added Tomato!");
+            } else {
+                this.addAdds(0.50);
+                this.addTotal(0.50);
+                this.additions.add("Tomato");
+                this.increaseAddsCount();
+            }
         }
     }
 
     public void addGarlic() {
         if(addsCount < 4) {
-            this.addAdds(0.75);
-            this.addTotal(0.75);
-            this.addAddz("Garlic ");
-            this.increaseAddsCount();
+            if(this.checkIfContains("Garlic")) {
+                System.out.println("You have already added Garlic!");
+            } else {
+                this.addAdds(0.75);
+                this.addTotal(0.75);
+                this.additions.add("Garlic");
+                this.increaseAddsCount();
+            }
         }
     }
 
     public void addBacon() {
         if(addsCount < 4) {
-            this.addAdds(1.00);
-            this.addTotal(1.00);
-            this.addAddz("Bacon ");
-            this.increaseAddsCount();
+            if(this.checkIfContains("Bacon")) {
+                System.out.println("You have already added Bacon!");
+            } else {
+                this.addAdds(1.00);
+                this.addTotal(1.00);
+                this.additions.add("Bacon");
+                this.increaseAddsCount();
+            }
+        }
+    }
+
+    public boolean checkIfContains(String addition) {
+        if(this.additions.contains(addition)) {
+            return true;
+        } else{
+            return false;
         }
     }
 

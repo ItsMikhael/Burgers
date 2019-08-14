@@ -22,19 +22,27 @@ public class HealthyBurger extends Hamburger {
 
     public void addJalapeno() {
         if(getAddsCount() < 6) {
-            this.addAdds(1.15);
-            this.addTotal(1.15);
-            this.addAddz("Jalapeno ");
-            this.increaseAddsCount();
+            if(this.checkIfContains("Jalapeno")) {
+                System.out.println("You have already added Jalapeno!");
+            } else {
+                this.addAdds(1.15);
+                this.addTotal(1.15);
+                this.addAddz("Jalapeno");
+                this.increaseAddsCount();
+            }
         }
     }
 
     public void addOnion() {
         if(getAddsCount() < 6) {
-            this.addAdds(1.25);
-            this.addTotal(1.25);
-            this.addAddz("Onion ");
-            this.increaseAddsCount();
+            if(this.checkIfContains("Onion")) {
+                System.out.println("You have already added Onion!");
+            } else {
+                this.addAdds(1.25);
+                this.addTotal(1.25);
+                this.addAddz("Onion");
+                this.increaseAddsCount();
+            }
         }
     }
 

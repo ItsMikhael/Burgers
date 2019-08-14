@@ -148,6 +148,9 @@ public class Main {
                                     ((HealthyBurger) yourBurger).addOnion();
                                     break;
                             }
+                            if(yourBurger.getAddsCount() == 6) {
+                                break;
+                            }
                         } else {
                             System.out.println("You already have 6 additions!");
                             break;
